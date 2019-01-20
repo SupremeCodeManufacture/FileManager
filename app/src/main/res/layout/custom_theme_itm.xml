@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/zone_theme"
+    android:layout_width="match_parent"
+    android:layout_height="108dp"
+    android:layout_margin="4dp"
+    android:background="@drawable/bg_rect"
+    android:orientation="vertical"
+    android:paddingBottom="8dp">
+
+    <View
+        android:id="@+id/v1"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:background="@color/primary_dark_0" />
+
+    <View
+        android:id="@+id/v2"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@+id/v1"
+        android:background="@color/primary_0" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/float_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:background="@color/accent_0"
+        app:fabSize="mini"
+        app:layout_anchor="@id/v2" />
+
+</RelativeLayout>

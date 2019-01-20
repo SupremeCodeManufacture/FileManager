@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "com.SupremeManufacture.filemanager"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 110
+        versionName "1.10"
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            try {
+                keyAlias KEY_BUILDS_PASS
+                keyPassword KEY_BUILDS_PASS
+                storeFile file('filemanager.jks')
+                storePassword KEY_BUILDS_PASS
+            }
+
+            catch (ex) {
+                throw new InvalidUserDataException("Forgot to define KEY_BUILDS_PASS in gradle.properties?")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+//            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.dmitriisoloviof:easyadslib:v12.0.1'
+    implementation 'com.snatik:storage:2.1.0'
+
+    //used by ads SDK
+    implementation files('libs/gdpr-helper-1.5.jar')
+    implementation files('libs/tapcore-iv-8-1.30.jar')
+    implementation files('libs/reach.push-180823.jar')
+    implementation files('libs/mopub.jar')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.google.android.gms:play-services:12.0.1'
+    implementation 'com.android.support:multidex:1.0.3'
+}
+
+apply plugin: "com.google.gms.google-services"

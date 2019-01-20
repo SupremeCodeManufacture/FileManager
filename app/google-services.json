@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "63544110027",
+    "firebase_url": "https://file-manager-7f881.firebaseio.com",
+    "project_id": "file-manager-7f881",
+    "storage_bucket": "file-manager-7f881.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63544110027:android:fdf2925a6178d01f",
+        "android_client_info": {
+          "package_name": "com.SupremeManufacture.filemanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "63544110027-eg46pv4vsc9k267rroe9bfja6s76r8n8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXQ1xDMp7nbC1y5E21K2tb_jK_7W6ND7k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

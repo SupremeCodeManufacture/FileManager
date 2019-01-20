@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">File Manager</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="by_last">Recent files</string>
+    <string name="by_folder">Folders</string>
+
+    <string name="communicate">Communicate</string>
+    <string name="rem_ads">Remove Ads</string>
+    <string name="rate_us">Rate us</string>
+    <string name="supp">Support</string>
+    <string name="about">About</string>
+
+    <string name="error_open_google_play">Sorry, we can\'t open Google Play on your device. Please make sure Google Play Services are installed and there is available Internet connection.</string>
+    <string name="error_txt_no_mail">Oops you don\'t have any app to send email</string>
+    <string name="err_open_file">Oops we can\'t open this file</string>
+    <string name="txt_no_mem_read_permissions">You didn\'t accept permission to view files on your device. You can turn it on  manually from Settings -> Applications -> this app - > permissions.</string>
+    <string name="txt_err_upgrade">Sorry unexpected error has occurred. Please make sure your device is connected with an active Google account and has the latest version of Google Play Services.</string>
+    <string name="txt_worning_pro_done">Successful payment, you became a PRO user!</string>
+
+    <string name="tv_imgs">Images</string>
+    <string name="tv_vids">Videos</string>
+    <string name="tv_docs">Documents</string>
+    <string name="tv_music">Music</string>
+    <string name="tv_dwnls">Downloads</string>
+    <string name="tv_apks">Apks</string>
+
+    <string name="txt_warn">Warning</string>
+    <string name="tv_loading">Loading…</string>
+
+
+    <string name="txt_itms">items</string>
+    <string name="txt_today">Today</string>
+    <string name="txt_yesterd">Yesterday</string>
+    <string name="txt_tomorrow">Tomorrow</string>
+    <string name="txt_unknw_time">Unknown time</string>
+
+
+    <string name="empty_directory_hint">Empty directory</string>
+    <string name="type_archive">Archive</string>
+    <string name="type_certificate">Certificate</string>
+    <string name="type_directory">Directory</string>
+    <string name="type_document">File</string>
+    <string name="type_drawing">Picture</string>
+    <string name="type_excel">Spreadsheet</string>
+    <string name="type_image">Image</string>
+    <string name="type_music">Music</string>
+    <string name="type_video">Video</string>
+    <string name="type_pdf">PDF document</string>
+    <string name="type_power_point">Presentation</string>
+    <string name="type_word">Document</string>
+    <string name="type_apk">APK</string>
+
+    <string name="by_folder_select">Select folder</string>
+    <string name="txt_del">Delete</string>
+    <string name="txt_confirm">Select</string>
+    <string name="txt_past_ok">Pasted successfully</string>
+    <string name="txt_del_ok">Removed successfully</string>
+    <string name="txt_copy">Copy</string>
+    <string name="txt_share">Share</string>
+    <string name="txt_move">Move</string>
+    <string name="txt_rename">Rename</string>
+    <string name="txt_more">More</string>
+    <string name="txt_details">Details</string>
+
+    <string name="txt_size">Size:</string>
+    <string name="txt_path">Path:</string>
+    <string name="txt_modif">Modified:</string>
+    <string name="txt_hiden">Hidden:</string>
+    <string name="txt_writ">Write:</string>
+    <string name="txt_read">Read:</string>
+
+    <string name="err_share_file">Oops we can\'t share this file</string>
+    <string name="err_det_file">Oops we can\'t show details about this file</string>
+    <string name="err_filed">Oops operation failed</string>
+    <string name="txt_copy_ok">Copied successfully</string>
+    <string name="txt_renamed_ok">Renamed successfully</string>
+
+    <string name="txt_new_name">Insert new name</string>
+    <string name="txt_sel_theme">Select theme</string>
+
+    <string name="txt_internal">Iternal memory</string>
+    <string name="txt_external">External SD-card</string>
+
+</resources>

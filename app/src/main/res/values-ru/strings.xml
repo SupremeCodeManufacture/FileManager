@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">Файловый менеджер</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="by_last">Последние файлы</string>
+    <string name="by_folder">Список папок</string>
+
+    <string name="communicate">Общаться</string>
+    <string name="rem_ads">Убрать рекламу</string>
+    <string name="rate_us">Оцените нас</string>
+    <string name="supp">Служба поддержки</string>
+    <string name="about">О приложении</string>
+
+    <string name="error_open_google_play">Извините, мы не можем открыть Google Play на вашем устройстве. Убедитесь, что установлены службы Google Play, и есть доступное интернет-соединение.</string>
+    <string name="error_txt_no_mail">У Вас установлено приложение для отправки электронной почты</string>
+    <string name="err_open_file">Не удалось открыть файл</string>
+    <string name="txt_no_mem_read_permissions">Вы не установили разрешения на просмотр файлов на своем устройстве. Вы можете включить его вручную из настроек -> Приложения -> это приложение -> разрешения.</string>
+    <string name="txt_err_upgrade">Произошла непредвиденная ошибка. Убедитесь, что ваше устройство подключено к активной учетной записи Google и службы Google Play обновлены до последней версии.</string>
+    <string name="txt_worning_pro_done">Вы успешно осуществили платёж и стали пользователем PRO версии!</string>
+
+    <string name="tv_imgs">Фото</string>
+    <string name="tv_vids">Видео</string>
+    <string name="tv_docs">Документы</string>
+    <string name="tv_music">Музыка</string>
+    <string name="tv_dwnls">Загрузки</string>
+    <string name="tv_apks">APK</string>
+
+    <string name="txt_warn">Предупреждение</string>
+    <string name="tv_loading">Идет загрузка</string>
+
+
+    <string name="txt_itms">Файлы</string>
+    <string name="txt_today">Сегодня</string>
+    <string name="txt_yesterd">Вчера</string>
+    <string name="txt_tomorrow">Завтра</string>
+    <string name="txt_unknw_time">Неизвестное время</string>
+
+
+    <string name="empty_directory_hint">Пустая папка</string>
+    <string name="type_archive">Архив</string>
+    <string name="type_certificate">Сертификат</string>
+    <string name="type_directory">Папка</string>
+    <string name="type_document">Файл</string>
+    <string name="type_drawing">Изображение</string>
+    <string name="type_excel">Таблица</string>
+    <string name="type_image">Изображение</string>
+    <string name="type_music">Аудиозапись</string>
+    <string name="type_video">Видео</string>
+    <string name="type_pdf">PDF документ</string>
+    <string name="type_power_point">Презентация</string>
+    <string name="type_word">Документ</string>
+    <string name="type_apk">APK</string>
+
+    <string name="by_folder_select">Выберите папку</string>
+    <string name="txt_del">Удалить</string>
+    <string name="txt_confirm">Выбрать</string>
+    <string name="txt_past_ok">Перемещение выполнено</string>
+    <string name="txt_del_ok">Удаление выполнено</string>
+
+
+    <string name="txt_copy">Копировать</string>
+    <string name="txt_share">Поделиться</string>
+    <string name="txt_move">Переместить</string>
+    <string name="txt_rename">Переименовать</string>
+    <string name="txt_more">Ещё</string>
+    <string name="txt_details">Подробности</string>
+
+    <string name="txt_size">Размер:</string>
+    <string name="txt_path">Путь:</string>
+    <string name="txt_modif">Дата изменения:</string>
+    <string name="txt_hiden">Скрытый:</string>
+    <string name="txt_writ">Права на запись:</string>
+    <string name="txt_read">Права на Чтение:</string>
+
+    <string name="err_share_file">Не удалось поделиться этим файлом</string>
+    <string name="err_det_file">Не удалось показать подробности об этом файле</string>
+    <string name="err_filed">Не удалось выполнить операцию</string>
+    <string name="txt_copy_ok">Скопировано</string>
+    <string name="txt_renamed_ok">Переименование выполнено</string>
+
+    <string name="txt_new_name">Введите новое имя</string>
+    <string name="txt_sel_theme">Выберите тему</string>
+
+    <string name="txt_internal">Внутренняя память</string>
+    <string name="txt_external">Внешняя SD-карта</string>
+
+</resources>

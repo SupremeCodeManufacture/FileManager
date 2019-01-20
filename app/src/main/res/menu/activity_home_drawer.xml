@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group>
+        <item
+            android:id="@+id/nav_by_last"
+            android:icon="@mipmap/ic_time"
+            android:title="@string/by_last" />
+        <item
+            android:id="@+id/nav_by_folder"
+            android:icon="@mipmap/ic_folder"
+            android:title="@string/by_folder" />
+        <item
+            android:id="@+id/nav_delete_ads"
+            android:icon="@mipmap/ic_pro"
+            android:title="@string/rem_ads" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@mipmap/ic_theme"
+            android:title="@string/txt_sel_theme" />
+    </group>
+
+    <item android:title="@string/communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_ask"
+                android:icon="@mipmap/ic_feedback"
+                android:title="@string/supp" />
+            <item
+                android:id="@+id/nav_rate"
+                android:icon="@mipmap/ic_rate"
+                android:title="@string/rate_us" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@mipmap/ic_info"
+                android:title="@string/about" />
+        </menu>
+    </item>
+
+</menu>

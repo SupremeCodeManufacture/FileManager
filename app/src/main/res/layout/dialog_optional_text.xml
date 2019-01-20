@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="24dp"
+        android:text="@string/txt_new_name"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/txt_xs_small" />
+
+    <EditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/txt_new_name"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/txt_xs_medium" />
+
+</LinearLayout>
