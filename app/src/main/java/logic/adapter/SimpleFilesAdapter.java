@@ -147,7 +147,7 @@ public class SimpleFilesAdapter extends RecyclerView.Adapter<SimpleFilesAdapter.
     private void manageItmSelection(int pos) {
         boolean newStatus = !mFilesList.get(pos).isSelected();
         String filePath = mFilesList.get(pos).getFile().getAbsolutePath();
-        MyLogs.LOG("SimpleFilesAdapter", "manageItmSelection", "pos: " + pos + " newStatus: " + newStatus + " filePath: " + filePath);
+        //MyLogs.LOG("SimpleFilesAdapter", "manageItmSelection", "pos: " + pos + " newStatus: " + newStatus + " filePath: " + filePath);
 
         mFilesList.get(pos).setSelected(newStatus);
         this.notifyItemChanged(pos);

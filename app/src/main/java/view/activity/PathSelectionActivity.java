@@ -112,7 +112,7 @@ public class PathSelectionActivity extends AppCompatActivity {
 
 //                writeFile(pickedDir);
 
-                MyLogs.LOG("PathSelectionActivity", "onActivityResult", "treeUri: " + treeUri.getPath());
+                //MyLogs.LOG("PathSelectionActivity", "onActivityResult", "treeUri: " + treeUri.getPath());
             }
         }
     }

@@ -21,11 +21,11 @@ public class PaymentHelper {
 
             iabHelper.startSetup(registerListener);
             App.setPaymentHelper(iabHelper);
-            MyLogs.LOG("PaymentHelper", "setUpPayments", "succesfuly");
+            //MyLogs.LOG("PaymentHelper", "setUpPayments", "succesfuly");
 
         } catch (Throwable throwable) {
             throwable.printStackTrace();
-            MyLogs.LOG("PaymentHelper", "setUpPayments", "ERROR --> " + throwable.toString());
+            //MyLogs.LOG("PaymentHelper", "setUpPayments", "ERROR --> " + throwable.toString());
         }
     }
 
@@ -36,13 +36,13 @@ public class PaymentHelper {
             iabHelper.queryInventoryAsync(inventoryListener);
 
         } catch (Throwable e) {
-            MyLogs.LOG("PaymentHelper", "getLifePaymentStatus", "ERROR --> " + e.getMessage());
+            //MyLogs.LOG("PaymentHelper", "getLifePaymentStatus", "ERROR --> " + e.getMessage());
         }
     }
 
     public static void doLifePayment(final Activity activity, IabHelper iabHelper, IabHelper.OnIabPurchaseFinishedListener purchaseListener) {
         try {
-            MyLogs.LOG("PaymentHelper", "doLifePayment", "google dialog shold be visible");
+            //MyLogs.LOG("PaymentHelper", "doLifePayment", "google dialog shold be visible");
             iabHelper.flagEndAsync();
             iabHelper.launchPurchaseFlow(activity, GenericConstants.KEY_IN_APP_SKU_ID, GenericConstants.KEY_IN_APP_RESPONSE_CODE, purchaseListener, null);
 
@@ -53,7 +53,7 @@ public class PaymentHelper {
                         App.getAppCtx().getResources().getString(R.string.txt_err_upgrade),
                         false, null, null, null
                 );
-                MyLogs.LOG("PaymentHelper", "doLifePayment", "ERROR --> " + e.getMessage());
+                //MyLogs.LOG("PaymentHelper", "doLifePayment", "ERROR --> " + e.getMessage());
             }
         }
     }

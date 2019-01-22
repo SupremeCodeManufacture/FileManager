@@ -152,7 +152,7 @@ public class CustomFilesAdapter extends RecyclerView.Adapter<CustomFilesAdapter.
     private void manageItmSelection(int pos) {
         boolean newStatus = !mFilesList.get(pos).isSelected();
         String filePath = mFilesList.get(pos).getFile().getAbsolutePath();
-        MyLogs.LOG("CustomFilesAdapter", "manageItmSelection", "pos: " + pos + " newStatus: " + newStatus + " filePath: " + filePath);
+        //MyLogs.LOG("CustomFilesAdapter", "manageItmSelection", "pos: " + pos + " newStatus: " + newStatus + " filePath: " + filePath);
 
         mFilesList.get(pos).setSelected(newStatus);
         this.notifyItemChanged(pos);

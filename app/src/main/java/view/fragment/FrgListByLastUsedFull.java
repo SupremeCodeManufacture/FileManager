@@ -122,7 +122,7 @@ public class FrgListByLastUsedFull extends BaseFrg {
 
     @Override
     public void onRestartSelections() {
-        MyLogs.LOG("FrgListByLastUsedFull", "onRestartSelections", "...");
+        //MyLogs.LOG("FrgListByLastUsedFull", "onRestartSelections", "...");
         asyncLoadAllRecent();
     }
 }

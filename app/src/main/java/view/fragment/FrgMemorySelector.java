@@ -35,7 +35,7 @@ public class FrgMemorySelector extends BaseFrg implements View.OnClickListener {
             sdardPath = getArguments().getString(GenericConstants.EXTRA_ARG_SD_CARD_PATH);
             isSelectedForCopyMove = viewTypeSelection == GenericConstants.KEY_SELECTED_FOR_COPY_MOVE;
 
-            MyLogs.LOG("FrgMemorySelector", "onCreateView", "viewTypeSelection: " + viewTypeSelection + " sdardPath: " + sdardPath + " isSelectedForCopyMove: " + isSelectedForCopyMove);
+            //MyLogs.LOG("FrgMemorySelector", "onCreateView", "viewTypeSelection: " + viewTypeSelection + " sdardPath: " + sdardPath + " isSelectedForCopyMove: " + isSelectedForCopyMove);
         }
 
         return view;

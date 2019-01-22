@@ -184,7 +184,7 @@ public class FileUtils {
 
     public static boolean renameFile(String fromPath, String toPasth) {
         try {
-            MyLogs.LOG("FileUtils", "renameFile", "fromPath: " + fromPath + " toPasth: " + toPasth);
+            //MyLogs.LOG("FileUtils", "renameFile", "fromPath: " + fromPath + " toPasth: " + toPasth);
             return new File(fromPath).renameTo(new File(toPasth));
 
         } catch (Exception e) {

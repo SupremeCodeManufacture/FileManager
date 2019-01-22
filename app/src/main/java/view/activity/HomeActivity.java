@@ -199,7 +199,7 @@ public class HomeActivity extends AppCompatActivity
 
     public void decideMemoryPaths(int whereToGoFurther) {
         String sdCardPath = FileUtils.getSdCardPath();
-        MyLogs.LOG("HomeActivity", "decideMemoryPaths", "sdCardPath: " + sdCardPath);
+        //MyLogs.LOG("HomeActivity", "decideMemoryPaths", "sdCardPath: " + sdCardPath);
 
         if (sdCardPath != null) {
             FrgMemorySelector frgMemorySelector = new FrgMemorySelector();
@@ -294,13 +294,13 @@ public class HomeActivity extends AppCompatActivity
 
         if (mListSelectedFiles != null && mListSelectedFiles.size() > 0) {
             for (String filePath : mListSelectedFiles) {
-                MyLogs.LOG("HomeActivity", "doPastFiles", "filePath: " + filePath);
+                //MyLogs.LOG("HomeActivity", "doPastFiles", "filePath: " + filePath);
                 String fileName = filePath.substring(filePath.lastIndexOf("/") + 1);
                 String pathTo = destinationPath + "/" + fileName;
-                MyLogs.LOG("HomeActivity", "doPastFiles", "fileName: " + fileName + " pathTo: " + pathTo);
+                //MyLogs.LOG("HomeActivity", "doPastFiles", "fileName: " + fileName + " pathTo: " + pathTo);
 
                 statusOk = FileUtils.moveFileNative(filePath, pathTo) || FileUtils.moveFileLib(filePath, pathTo);
-                MyLogs.LOG("HomeActivity", "doPastFiles", "statusOk: " + statusOk);
+                //MyLogs.LOG("HomeActivity", "doPastFiles", "statusOk: " + statusOk);
             }
         }
 
@@ -312,11 +312,11 @@ public class HomeActivity extends AppCompatActivity
 
         if (mListSelectedFiles != null && mListSelectedFiles.size() > 0) {
             for (String filePath : mListSelectedFiles) {
-                MyLogs.LOG("HomeActivity", "doCopyFiles", "filePath: " + filePath);
+                //MyLogs.LOG("HomeActivity", "doCopyFiles", "filePath: " + filePath);
                 String pathFrom = filePath.substring(0, filePath.lastIndexOf("/") + 1);
                 String fileName = filePath.substring(filePath.lastIndexOf("/") + 1);
                 String pathTo = destinationPath + "/" + fileName;
-                MyLogs.LOG("HomeActivity", "doCopyFiles", "pathFrom: " + pathFrom + " fileName: " + fileName + " pathTo: " + pathTo);
+                //MyLogs.LOG("HomeActivity", "doCopyFiles", "pathFrom: " + pathFrom + " fileName: " + fileName + " pathTo: " + pathTo);
 
                 statusOk = FileUtils.copyFileLib(filePath, pathTo);
             }
@@ -331,7 +331,7 @@ public class HomeActivity extends AppCompatActivity
 
         if (mListSelectedFiles != null && mListSelectedFiles.size() > 0) {
             for (String filePath : mListSelectedFiles) {
-                MyLogs.LOG("HomeActivity", "doFileDelete", "filePath: " + filePath);
+                //MyLogs.LOG("HomeActivity", "doFileDelete", "filePath: " + filePath);
 
                 statusOk = FileUtils.removeFile(filePath);
             }
@@ -347,7 +347,7 @@ public class HomeActivity extends AppCompatActivity
         final File file = new File(fileName);
 
         if (file.exists()) {
-            MyLogs.LOG("HomeActivity", "doRenameFile", "ok");
+            //MyLogs.LOG("HomeActivity", "doRenameFile", "ok");
 
             Dialogs.showOptionalInputTxtDialog(HomeActivity.this, file.getName(), new OnTextInsertedListener() {
                 @Override
@@ -480,7 +480,7 @@ public class HomeActivity extends AppCompatActivity
             }
 
         } else {
-            MyLogs.LOG("BaseActivity", "onActivityResult", "handled by IABUtil");
+            //MyLogs.LOG("BaseActivity", "onActivityResult", "handled by IABUtil");
         }
     }
 
@@ -533,11 +533,11 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public void onIabSetupFinished(IabResult result) {
         if (result.isSuccess()) {
-            MyLogs.LOG("HomeActivity", "onIabSetupFinished", "Setting up In-app Billing succesfull");
+            //MyLogs.LOG("HomeActivity", "onIabSetupFinished", "Setting up In-app Billing succesfull");
             PaymentHelper.getLifePaymentStatus(App.getPaymentHelper(), HomeActivity.this);
 
         } else {
-            MyLogs.LOG("HomeActivity", "onIabSetupFinished", "Problem setting up In-app Billing: " + result);
+            //MyLogs.LOG("HomeActivity", "onIabSetupFinished", "Problem setting up In-app Billing: " + result);
         }
     }
 
@@ -546,25 +546,25 @@ public class HomeActivity extends AppCompatActivity
         if (result.isSuccess()) {
             boolean isPro = inventory.hasPurchase(GenericConstants.KEY_IN_APP_SKU_ID);
 
-            MyLogs.LOG("HomeActivity", "onQueryInventoryFinished", "isPro: " + isPro);
+            //MyLogs.LOG("HomeActivity", "onQueryInventoryFinished", "isPro: " + isPro);
             App.setUserPro(isPro);
             showHideRemoveAdsOption(isPro);
 
         } else {
-            MyLogs.LOG("HomeActivity", "onQueryInventoryFinished", "Error query inventory: " + result);
+            //MyLogs.LOG("HomeActivity", "onQueryInventoryFinished", "Error query inventory: " + result);
         }
     }
 
     @Override
     public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
         if (result.isSuccess()) {
-            MyLogs.LOG("BaseActivity", "onIabPurchaseFinished", "purchese SKU: " + purchase.getSku());
+            //MyLogs.LOG("BaseActivity", "onIabPurchaseFinished", "purchese SKU: " + purchase.getSku());
             App.setUserPro(true);
             showHideRemoveAdsOption(true);
             Toast.makeText(HomeActivity.this, App.getAppCtx().getResources().getString(R.string.txt_worning_pro_done), Toast.LENGTH_LONG).show();
 
         } else {
-            MyLogs.LOG("BaseActivity", "onIabPurchaseFinished", "Error purchasing: " + result);
+            //MyLogs.LOG("BaseActivity", "onIabPurchaseFinished", "Error purchasing: " + result);
         }
     }
 

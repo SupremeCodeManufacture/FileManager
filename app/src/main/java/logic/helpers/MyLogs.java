@@ -1,9 +1,6 @@
 package logic.helpers;
 
-import android.content.Context;
 import android.util.Log;
-
-import data.App;
 
 public class MyLogs {
 

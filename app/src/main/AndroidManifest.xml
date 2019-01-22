@@ -10,12 +10,6 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="com.android.vending.BILLING" />
 
-
-    <!--added for second add sdk-->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-
     <!--added for ads sdk-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission
@@ -85,49 +79,6 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/ads_app_id" />
-
-
-        <!--added for 2d ads SDK-->
-        <activity
-            android:name="com.mopub.mobileads.service.MopubActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <service android:name="com.mopub.mobileads.service.MopubService" />
-        <service android:name="com.mopub.mobileads.service.MopubServiceN" />
-        <service
-            android:name="com.mopub.mobileads.service.MopubAsyncRequest"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-
-        <receiver android:name="com.mopub.mobileads.MopubRestart">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name="com.mopub.mobileads.Install">
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
-            </intent-filter>
-        </receiver>
-
-
-        <!--added for 3d ads SDK-->
-        <activity
-            android:name="com.reach.PeerActivity"
-            android:excludeFromRecents="true"
-            android:taskAffinity="reach.peer.default"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <service android:name="com.reach.ActionService" />
-
-        <receiver
-            android:name="com.reach.ActionMonitor"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
 
 
         <!--added for 1st ads Tapcore SDK-->

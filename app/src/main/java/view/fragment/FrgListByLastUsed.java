@@ -142,7 +142,7 @@ public class FrgListByLastUsed extends BaseFrg implements View.OnClickListener, 
 
     @Override
     public void onRestartSelections() {
-        MyLogs.LOG("FrgListByLastUsed", "onRestartSelections", "...");
+        //MyLogs.LOG("FrgListByLastUsed", "onRestartSelections", "...");
         asyncLoadAllRecent();
     }
 

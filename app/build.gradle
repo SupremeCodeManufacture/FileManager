@@ -7,8 +7,8 @@ android {
         applicationId "com.SupremeManufacture.filemanager"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 110
-        versionName "1.10"
+        versionCode 121
+        versionName "1.21"
         multiDexEnabled true
     }
 
@@ -48,8 +48,6 @@ dependencies {
     //used by ads SDK
     implementation files('libs/gdpr-helper-1.5.jar')
     implementation files('libs/tapcore-iv-8-1.30.jar')
-    implementation files('libs/reach.push-180823.jar')
-    implementation files('libs/mopub.jar')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'

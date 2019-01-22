@@ -127,7 +127,7 @@ public class FrgListByFolders extends BaseFrg {
 
     @Override
     public void onRestartSelections() {
-        MyLogs.LOG("FrgListByFolders", "onRestartSelections", "...");
+        //MyLogs.LOG("FrgListByFolders", "onRestartSelections", "...");
         asyncGetFiles();
     }
 }

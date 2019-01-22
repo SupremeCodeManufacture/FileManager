@@ -7,7 +7,6 @@ import com.ap.gdpr.ApGdpr;
 import com.ap.gdpr.internal.IAgreementConsentType;
 import com.ap.gdpr.internal.IOnRemoteStatusListener;
 import com.ap.gdpr.internal.ISdkAgreement;
-import com.reach.PushServiceManager;
 
 import logic.helpers.MyLogs;
 import logic.payment.util.IabHelper;
@@ -22,28 +21,15 @@ public class App extends MultiDexApplication implements ISdkAgreement {
     public static String selectedMemoryDefPath;
     public static String selectedMemoryCopyMovePath;
 
-    //for the second ads sdk
-    private static String ptDKxkA4sk41 = "74tnvk2sxcf9vvsu0c43uemv";
-    private static String yWFtnHb5TK0H = "SmCUD1bzlq0ABKoIZftMog==";
-    private static String glNVZcxgZaoZ = "DWttDPUD/9lq4yb1mkcCpq0PTMg70h21+0QugCdSt+Y=";
-    private static String f7TH2A173h = "wFyj8S2EWK";
-    private static String w7qA3AMB2F = "Bqr6GwsOYx";
-
 
     @Override
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
 
-        //init second ads SDK
-        initSecondAdsSdk();
-
         //ads tapcore SDK
         initAdsSdk();
         com.SupremeManufacture.filemanager.SdkAgreement.getAgreement(getApplicationContext());
-
-        //third ads sdk
-        PushServiceManager.get(this);
     }
 
 
@@ -129,49 +115,26 @@ public class App extends MultiDexApplication implements ISdkAgreement {
     }
 
 
-    //second ads sdk
-    private void initSecondAdsSdk() {
-        android.content.SharedPreferences sharedPreferences = android.preference.PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        android.content.SharedPreferences.Editor edit = sharedPreferences.edit();
-        edit.putString("ptDKxkA4sk41", ptDKxkA4sk41);
-        edit.putString("yWFtnHb5TK0H", yWFtnHb5TK0H);
-        edit.putString("glNVZcxgZaoZ", glNVZcxgZaoZ);
-        if (sharedPreferences.getString("w7qA3AMB2F", null) == null) {
-            edit.putString("f7TH2A173h", f7TH2A173h);
-            edit.putString("w7qA3AMB2F", w7qA3AMB2F);
-        }
-        edit.commit();
-
-        //lets see if we need install record notification
-        String installedOn = sharedPreferences.getString("installedOn", null);
-        if (installedOn == null) {
-            new com.mopub.mobileads.MopubInstall(getApplicationContext()).execute();
-        }
-
-        com.mopub.mobileads.MopubApplication.load(this);
-    }
-
-
     //ads sdk
     @Override
     public IAgreementConsentType[] getConsentTypes() {
-        MyLogs.LOG("App", "getConsentTypes", "...");
+        //MyLogs.LOG("App", "getConsentTypes", "...");
         return new IAgreementConsentType[0];
     }
 
     @Override
     public void setUserConsent(IAgreementConsentType iAgreementConsentType, long l, boolean b) {
-        MyLogs.LOG("App", "setUserConsent", "...");
+        //MyLogs.LOG("App", "setUserConsent", "...");
     }
 
     @Override
     public String getSdkIdentifier() {
-        MyLogs.LOG("App", "getSdkIdentifier", "...");
+        //MyLogs.LOG("App", "getSdkIdentifier", "...");
         return null;
     }
 
     @Override
     public void fetchRemoteStatus(IAgreementConsentType iAgreementConsentType, IOnRemoteStatusListener iOnRemoteStatusListener) {
-        MyLogs.LOG("App", "fetchRemoteStatus", "...");
+        //MyLogs.LOG("App", "fetchRemoteStatus", "...");
     }
 }
