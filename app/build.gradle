@@ -45,7 +45,7 @@ dependencies {
     implementation 'com.github.dmitriisoloviof:easyadslib:v12.0.1'
     implementation 'com.snatik:storage:2.1.0'
 
-    //used by ads SDK
+    //used by Tapcore ads SDK
     implementation files('libs/gdpr-helper-1.5.jar')
     implementation files('libs/tapcore-iv-8-1.30.jar')
     implementation 'com.android.support:appcompat-v7:28.0.0'
