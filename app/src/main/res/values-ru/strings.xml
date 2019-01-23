@@ -84,5 +84,6 @@
 
     <string name="txt_internal">Внутренняя память</string>
     <string name="txt_external">Внешняя SD-карта</string>
+    <string name="txt_def_notific">Проверьте свой файловый менеджер</string>
 
 </resources>

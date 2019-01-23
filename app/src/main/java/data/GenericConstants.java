@@ -23,6 +23,13 @@ public class GenericConstants {
     public static final int STATE_OK = 2;
     public static final int STATE_EMPTY = 3;
 
+    //cloud message topics & cmd
+    public static final String TOPIC_ALL = "all";
+    public static final String CMD_GO_TO_PLAYSTORE = "go_to_playtore";
+    public static final String CMD_PROMOTE_APP = "promote_app";
+    public static final String CMD_PROMO_FAKE = "promo_fake";
+
+
     //shared prefs vars
     public static final String KEY_SHARED_PREFS = "KEY_SHARED_PREFS";
     public static final String KEY_SP_IS_USER_PRO = "KEY_SP_IS_USER_PRO";

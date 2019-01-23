@@ -1,6 +1,7 @@
 package data;
 
 import android.content.Context;
+import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.ap.gdpr.ApGdpr;
@@ -30,6 +31,12 @@ public class App extends MultiDexApplication implements ISdkAgreement {
         //ads tapcore SDK
         initAdsSdk();
         com.SupremeManufacture.filemanager.SdkAgreement.getAgreement(getApplicationContext());
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
 
