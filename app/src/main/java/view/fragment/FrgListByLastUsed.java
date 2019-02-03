@@ -74,24 +74,9 @@ public class FrgListByLastUsed extends BaseFrg implements View.OnClickListener, 
         mLlNoItms = (RelativeLayout) view.findViewById(R.id.directory_empty_view);
 
         getActivity().setTitle(App.getAppCtx().getResources().getString(R.string.by_last));
-        initBanner(view);
-    }
 
-    private void initBanner(View view) {
         LinearLayout bannerHolder = (LinearLayout) view.findViewById(R.id.ll_banner);
-        if (!App.isUserPro()) {
-            bannerHolder.setVisibility(View.VISIBLE);
-
-            CustomizeAds.setupAddBanner(
-                    getActivity(),
-                    bannerHolder,
-                    AdSize.SMART_BANNER,
-                    AdsRepo.getBannerId1(App.getAppCtx(), App.getAppBuilds(), App.getAppCtx().getResources().getString(R.string.banner_id)),
-                    "FrgListByLastUsed screen");
-
-        } else {
-            bannerHolder.setVisibility(View.GONE);
-        }
+        initBanner(bannerHolder, "FrgListByLastUsed");
     }
 
     private void asyncLoadAllRecent() {

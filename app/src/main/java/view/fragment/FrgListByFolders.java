@@ -68,24 +68,8 @@ public class FrgListByFolders extends BaseFrg {
 
         getActivity().setTitle(App.getAppCtx().getResources().getString(R.string.by_folder));
 
-        initBanner(view);
-    }
-
-    private void initBanner(View view) {
         LinearLayout bannerHolder = (LinearLayout) view.findViewById(R.id.ll_banner);
-        if (!App.isUserPro()) {
-            bannerHolder.setVisibility(View.VISIBLE);
-
-            CustomizeAds.setupAddBanner(
-                    getActivity(),
-                    bannerHolder,
-                    AdSize.SMART_BANNER,
-                    AdsRepo.getBannerId1(App.getAppCtx(), App.getAppBuilds(), App.getAppCtx().getResources().getString(R.string.banner_id)),
-                    "FrgListByFolders screen");
-
-        } else {
-            bannerHolder.setVisibility(View.GONE);
-        }
+        initBanner(bannerHolder, "FrgListByFolders");
     }
 
     private void asyncGetFiles() {

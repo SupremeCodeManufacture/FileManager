@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "63544110027-5m75qkn5hmp4ntfoion5iuqmihqkpufg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.SupremeManufacture.filemanager",
+            "certificate_hash": "bc411487418f95b3aa364263dd31e7d8e4b5cfdb"
+          }
+        },
+        {
           "client_id": "63544110027-eg46pv4vsc9k267rroe9bfja6s76r8n8.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,13 +37,19 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "63544110027-eg46pv4vsc9k267rroe9bfja6s76r8n8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-5498387531657533~7549241242"
     }
   ],
   "configuration_version": "1"

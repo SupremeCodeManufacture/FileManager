@@ -1,6 +1,7 @@
 package logic.push_notification;
 
 import com.SupremeManufacture.filemanager.R;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -8,6 +9,7 @@ import data.App;
 import data.GenericConstants;
 import logic.helpers.MyLogs;
 import view.custom.Notifications;
+
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -17,7 +19,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
-            //MyLogs.LOG("MyFirebaseMessagingService", "onMessageReceived", "DATA: " + remoteMessage.getData().toString());
+            //MyLogs.LOG("MyFirebasCloudDataObjeMessagingService", "onMessageReceived", "DATA: " + remoteMessage.getData().toString());
             CloudDataObj cloudDataObj = DataFormatConverter.getObjFromJson(remoteMessage.getData().toString());
             if (cloudDataObj != null) {
 
@@ -62,4 +64,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     null);
         }
     }
+
+    @Override
+    public void onNewToken(String token) {
+        //subscribe to notifications topic & send it to server
+        //MyLogs.LOG("MyFirebaseMessagingService", "onNewToken", "token: " + token);
+        FirebaseMessaging.getInstance().subscribeToTopic(GenericConstants.TOPIC_ALL);
+
+        super.onNewToken(token);
+    }
+
 }

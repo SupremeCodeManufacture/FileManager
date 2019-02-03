@@ -63,24 +63,8 @@ public class FrgListByLastUsedFull extends BaseFrg {
         String toolbarTitle = getArguments().getString(GenericConstants.EXTRA_ARG_TITLE);
         if (toolbarTitle != null) getActivity().setTitle(toolbarTitle);
 
-        initBanner(view);
-    }
-
-    private void initBanner(View view) {
         LinearLayout bannerHolder = (LinearLayout) view.findViewById(R.id.ll_banner);
-        if (!App.isUserPro()) {
-            bannerHolder.setVisibility(View.VISIBLE);
-
-            CustomizeAds.setupAddBanner(
-                    getActivity(),
-                    bannerHolder,
-                    AdSize.SMART_BANNER,
-                    AdsRepo.getBannerId1(App.getAppCtx(), App.getAppBuilds(), App.getAppCtx().getResources().getString(R.string.banner_id)),
-                    "FrgListByLastUsedFull screen");
-
-        } else {
-            bannerHolder.setVisibility(View.GONE);
-        }
+        initBanner(bannerHolder, "FrgListByLastUsedFull");
     }
 
     private void asyncLoadAllRecent() {

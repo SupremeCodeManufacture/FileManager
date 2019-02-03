@@ -4,11 +4,14 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
+import com.SupremeManufacture.filemanager.BuildConfig;
 import com.ap.gdpr.ApGdpr;
 import com.ap.gdpr.internal.IAgreementConsentType;
 import com.ap.gdpr.internal.IOnRemoteStatusListener;
 import com.ap.gdpr.internal.ISdkAgreement;
+import com.crashlytics.android.Crashlytics;
 
+import io.fabric.sdk.android.Fabric;
 import logic.helpers.MyLogs;
 import logic.payment.util.IabHelper;
 
@@ -27,6 +30,12 @@ public class App extends MultiDexApplication implements ISdkAgreement {
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
+
+        Fabric fabric = new Fabric.Builder(this)
+                .kits(new Crashlytics())
+                .debuggable(BuildConfig.DEBUG)
+                .build();
+        Fabric.with(fabric);
 
         //ads tapcore SDK
         initAdsSdk();

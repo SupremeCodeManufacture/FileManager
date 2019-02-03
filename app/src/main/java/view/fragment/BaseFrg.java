@@ -1,13 +1,15 @@
 package view.fragment;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.SupremeManufacture.filemanager.R;
-import com.soloviof.easyads.InterstitialAddsHelper;
+import com.google.android.gms.ads.AdSize;
+import com.soloviof.easyads.AdsRepo;
+import com.soloviof.easyads.CustomizeAds;
 
 import java.io.File;
 import java.util.List;
@@ -45,6 +47,22 @@ public abstract class BaseFrg extends Fragment implements
     @Override
     public void onRestartSelections() {
         //implemented foreach frg with selectable files
+    }
+
+    protected void initBanner(LinearLayout bannerHolder, String logAdBannerName) {
+        if (!App.isUserPro()) {
+            bannerHolder.setVisibility(View.VISIBLE);
+
+            CustomizeAds.setupAddBanner(
+                    getActivity(),
+                    bannerHolder,
+                    AdSize.SMART_BANNER,
+                    AdsRepo.getBannerId1(App.getAppCtx(), App.getAppBuilds(), App.getAppCtx().getResources().getString(R.string.banner_id)),
+                    logAdBannerName);
+
+        } else {
+            bannerHolder.setVisibility(View.GONE);
+        }
     }
 
 
