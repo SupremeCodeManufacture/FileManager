@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import data.App;
+import data.GenericConstants;
+import logic.helpers.MyLogs;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -16,7 +18,10 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         App.setAppBuilds(App.getAppBuilds() + 1);
 
-        SplashScreenActivity.this.startActivity(new Intent(this, HomeActivity.class));
+        boolean needToShowPayBannerFlag = getIntent().getBooleanExtra(GenericConstants.EXTRA_NEED_UPGRADE, false);
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra(GenericConstants.EXTRA_NEED_UPGRADE, needToShowPayBannerFlag);
+        SplashScreenActivity.this.startActivity(intent);
         SplashScreenActivity.this.finish();
     }
 }

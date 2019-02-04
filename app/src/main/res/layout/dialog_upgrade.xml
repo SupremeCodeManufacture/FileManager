@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog"
+    android:paddingStart="@dimen/custom_24"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingEnd="@dimen/custom_24"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+
+
+    <RelativeLayout
+        android:id="@+id/zone_price_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/tv_price_int"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_xxx_large" />
+
+        <TextView
+            android:id="@+id/tv_price_float"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_toEndOf="@+id/tv_price_int"
+            android:text="99"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_large" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/tv_price_float"
+            android:text="$/month"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_xs_medium" />
+
+        <TextView
+            android:id="@+id/discount_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_price_int"
+            android:layout_alignBaseline="@+id/discount_percents"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:text="$ 4.99"
+            android:textColor="@color/white_80"
+            android:textSize="@dimen/txt_xs_medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/discount_percents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_price_int"
+            android:layout_toEndOf="@+id/discount_price"
+            android:text="-50% OFF"
+            android:textColor="@color/primary_4"
+            android:textSize="@dimen/txt_xs_medium"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/zone_price_data"
+        android:layout_marginTop="@dimen/custom_24"
+        android:layout_marginBottom="@dimen/custom_24" />
+
+
+    <Button
+        android:id="@+id/btn_upgrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rv_options"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_btn"
+        android:gravity="center"
+        android:paddingStart="@dimen/activity_vertical_margin_double"
+        android:paddingTop="12dp"
+        android:paddingEnd="@dimen/activity_vertical_margin_double"
+        android:paddingBottom="12dp"
+        android:text="@string/txt_upgrade"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/txt_xs_medium"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

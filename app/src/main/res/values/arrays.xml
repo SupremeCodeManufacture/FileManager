@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pro_options">
+        <item>No ads for life</item>
+        <item>Device speed optimization</item>
+        <item>VIP support 24/7</item>
+    </string-array>
+
+</resources>

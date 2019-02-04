@@ -34,17 +34,18 @@ import com.soloviof.easyads.InitApp;
 import com.soloviof.easyads.InterstitialAddsHelper;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import data.App;
 import data.GenericConstants;
 import data.ThemeObj;
-import logic.helpers.CopyMoveUtils;
 import logic.helpers.FileUtils;
 import logic.helpers.MyLogs;
 import logic.helpers.PermissionsHelper;
 import logic.helpers.ThemeColorsHelper;
 import logic.listener.OnRestartFilesSelectionsListener;
+import logic.listener.OnSingleSelectionListener;
 import logic.listener.OnThemeSelectedListener;
 import logic.payment.PaymentHelper;
 import logic.payment.util.IabHelper;
@@ -54,6 +55,7 @@ import logic.payment.util.Purchase;
 import view.custom.Dialogs;
 import view.custom.OnTextInsertedListener;
 import view.custom.SimpleDialogPopUpListener;
+import view.custom.UpgradeDialog;
 import view.fragment.FrgListByFolders;
 import view.fragment.FrgListByLastUsed;
 import view.fragment.FrgListByLastUsedFull;
@@ -75,7 +77,7 @@ public class HomeActivity extends AppCompatActivity
 
 
     private OnRestartFilesSelectionsListener listener;
-    private List<String> mListSelectedFiles;
+    private List<String> mListSelectedFiles = new ArrayList<>();
 
 
     @Override
@@ -85,6 +87,11 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
         initViews();
+
+        boolean needToShowPayBannerFlag = getIntent().getBooleanExtra(GenericConstants.EXTRA_NEED_UPGRADE, false);
+        if(needToShowPayBannerFlag){
+            showUpgradeDialog();
+        }
 
         //initialised only here - just to know if it's PRO for further activities
         PaymentHelper.setUpPayments(HomeActivity.this, HomeActivity.this);
@@ -135,7 +142,7 @@ public class HomeActivity extends AppCompatActivity
         sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_HIDDEN && mListSelectedFiles != null && mListSelectedFiles.size() > 0) {
+                if (newState == BottomSheetBehavior.STATE_HIDDEN && mListSelectedFiles.size() > 0) {
                     sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 }
             }
@@ -270,9 +277,9 @@ public class HomeActivity extends AppCompatActivity
 
 
     public void manageMenuBtns(List<String> listToMove) {
-        this.mListSelectedFiles = listToMove;
-
         if (listToMove != null && listToMove.size() > 0) {
+            this.mListSelectedFiles.addAll(listToMove);
+
             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
             if (listToMove.size() == 1) {
@@ -292,7 +299,7 @@ public class HomeActivity extends AppCompatActivity
     public void doPastFiles(String destinationPath) {
         boolean statusOk = false;
 
-        if (mListSelectedFiles != null && mListSelectedFiles.size() > 0) {
+        if (mListSelectedFiles.size() > 0) {
             for (String filePath : mListSelectedFiles) {
                 //MyLogs.LOG("HomeActivity", "doPastFiles", "filePath: " + filePath);
                 String fileName = filePath.substring(filePath.lastIndexOf("/") + 1);
@@ -310,7 +317,7 @@ public class HomeActivity extends AppCompatActivity
     public void doCopyFiles(String destinationPath) {
         boolean statusOk = false;
 
-        if (mListSelectedFiles != null && mListSelectedFiles.size() > 0) {
+        if (mListSelectedFiles.size() > 0) {
             for (String filePath : mListSelectedFiles) {
                 //MyLogs.LOG("HomeActivity", "doCopyFiles", "filePath: " + filePath);
                 String pathFrom = filePath.substring(0, filePath.lastIndexOf("/") + 1);
@@ -329,7 +336,7 @@ public class HomeActivity extends AppCompatActivity
     public void doFileDelete() {
         boolean statusOk = false;
 
-        if (mListSelectedFiles != null && mListSelectedFiles.size() > 0) {
+        if (mListSelectedFiles.size() > 0) {
             for (String filePath : mListSelectedFiles) {
                 //MyLogs.LOG("HomeActivity", "doFileDelete", "filePath: " + filePath);
 
@@ -366,6 +373,15 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
+    private void showUpgradeDialog() {
+        new UpgradeDialog(HomeActivity.this, new OnSingleSelectionListener() {
+            @Override
+            public void onConfirmButtonClick() {
+                PaymentHelper.doLifePayment(HomeActivity.this, App.getPaymentHelper(), HomeActivity.this);
+            }
+        }).show();
+    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -375,7 +391,7 @@ public class HomeActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_delete_ads:
-                PaymentHelper.doLifePayment(HomeActivity.this, App.getPaymentHelper(), HomeActivity.this);
+                showUpgradeDialog();
                 break;
 
             case R.id.nav_by_folder:
@@ -516,11 +532,13 @@ public class HomeActivity extends AppCompatActivity
                 break;
 
             case R.id.tv_rename:
-                doRenameFile(mListSelectedFiles.get(0));
+                if (mListSelectedFiles.size() > 0)
+                    doRenameFile(mListSelectedFiles.get(0));
                 break;
 
             case R.id.tv_det:
-                FileUtils.showFileDetails(HomeActivity.this, mListSelectedFiles.get(0));
+                if (mListSelectedFiles.size() > 0)
+                    FileUtils.showFileDetails(HomeActivity.this, mListSelectedFiles.get(0));
 
                 //refresh selection
                 if (listener != null) listener.onRestartSelections();

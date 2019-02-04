@@ -4,11 +4,17 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="custom_24">24dp</dimen>
+    <dimen name="activity_vertical_margin_double">32dp</dimen>
 
 
     <!--static sizes for text-->
     <dimen name="txt_xs_small">12dp</dimen>
     <dimen name="txt_xs_medium">16dp</dimen>
     <dimen name="txt_large">22dp</dimen>
+    <dimen name="txt_x_large">28dp</dimen>
+    <dimen name="txt_xxx_large">32dp</dimen>
+    <dimen name="txt_dialog_btns">15dp</dimen>
+
 
 </resources>

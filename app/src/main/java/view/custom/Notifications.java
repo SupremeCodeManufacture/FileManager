@@ -13,7 +13,7 @@ import android.support.v4.app.NotificationCompat;
 import com.SupremeManufacture.filemanager.R;
 
 import data.App;
-import logic.helpers.MyLogs;
+import data.GenericConstants;
 import logic.push_notification.DataFormatConverter;
 import view.activity.SplashScreenActivity;
 
@@ -29,7 +29,6 @@ public class Notifications {
 
     public static void showFCMNotification(int pid, String from, String messageBody, Uri googlePlayUri) {
         //MyLogs.LOG("Notifications", "showFCMNotification", "messageBody: " + messageBody + " googlePlayUri: " + googlePlayUri);
-        NotificationManager notificationManager = setupNotifChannel();
         PendingIntent pendingIntent;
 
         if (googlePlayUri != null) {
@@ -48,19 +47,7 @@ public class Notifications {
         if (messageBody == null)
             messageBody = ctx.getResources().getString(R.string.txt_def_notific);
 
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ctx, channelId)
-                .setSmallIcon(DataFormatConverter.getNotificationIcon())
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setContentText(messageBody)
-                .setAutoCancel(true)
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setContentIntent(pendingIntent);
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N)
-            mBuilder.setContentTitle(from);
-
-        if (notificationManager != null)
-            notificationManager.notify(pid, mBuilder.build());
+        showNotific(from, messageBody, pid, pendingIntent);
     }
 
     public static void fakePromo(String from, String messageBody, Uri googlePlayUri) {
@@ -88,6 +75,39 @@ public class Notifications {
         }
     }
 
+    public static void showNotificForUpgrade(int pid, String from, String messageBody) {
+        Intent intent = new Intent(ctx, SplashScreenActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(GenericConstants.EXTRA_NEED_UPGRADE, true);
+        PendingIntent pendingIntent = PendingIntent.getActivity(ctx, (int) System.currentTimeMillis() / 1000, intent, PendingIntent.FLAG_ONE_SHOT);
+
+        if (from == null)
+            from = ctx.getResources().getString(R.string.app_name);
+
+        if (messageBody == null)
+            messageBody = ctx.getResources().getString(R.string.txt_def_notific);
+
+        showNotific(from, messageBody, pid, pendingIntent);
+    }
+
+
+    private static void showNotific(String from, String messageBody, int pid, PendingIntent pendingIntent) {
+        NotificationManager notificationManager = setupNotifChannel();
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ctx, channelId)
+                .setSmallIcon(DataFormatConverter.getNotificationIcon())
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentText(messageBody)
+                .setAutoCancel(true)
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setContentIntent(pendingIntent);
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N)
+            mBuilder.setContentTitle(from);
+
+        if (notificationManager != null)
+            notificationManager.notify(pid, mBuilder.build());
+    }
 
     private static NotificationManager setupNotifChannel() {
         NotificationManager notificationManager = (NotificationManager) App.getAppCtx().getSystemService(NOTIFICATION_SERVICE);

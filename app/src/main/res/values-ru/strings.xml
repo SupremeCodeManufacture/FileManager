@@ -86,4 +86,6 @@
     <string name="txt_external">Внешняя SD-карта</string>
     <string name="txt_def_notific">Проверьте свой файловый менеджер</string>
 
+    <string name="txt_upgrade">Обнови сейчас</string>
+
 </resources>

@@ -44,6 +44,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                                 cloudDataObj.getUserNotification().getText(),
                                 DataFormatConverter.safeConvertUrlToUri(cloudDataObj.getPromoLink()));
 
+                    } else if (cloudDataObj.getToDo() != null && cloudDataObj.getToDo().equals(GenericConstants.CMD_NOTIFY_BUY)) {
+                        //show only on demo devices
+                        if (!App.isUserPro()) {
+                            Notifications.showNotificForUpgrade(
+                                    cloudDataObj.getUserNotification().getNotificId(),
+                                    cloudDataObj.getUserNotification().getSenderName(),
+                                    cloudDataObj.getUserNotification().getText());
+                        }
+
                     } else {
                         Notifications.showFCMNotification(
                                 cloudDataObj.getUserNotification().getNotificId(),
@@ -73,5 +82,4 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         super.onNewToken(token);
     }
-
 }

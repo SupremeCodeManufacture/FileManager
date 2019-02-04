@@ -14,6 +14,7 @@ public class GenericConstants {
     public static String EXTRA_ARG_VIEW_TYPE = "EXTRA_ARG_VIEW_TYPE";
     public static String EXTRA_ARG_SD_CARD_PATH = "EXTRA_ARG_SD_CARD_PATH";
     public static String EXTRA_ARG_PATH_TO = "EXTRA_ARG_PATH_TO";
+    public static String EXTRA_NEED_UPGRADE = "EXTRA_NEED_UPGRADE";
 
     public static final int CODE_PATH_TO_MOVE_SELECTED = 123;
     public static final int CODE_PATH_TO_COPY_SELECTED = 124;
@@ -28,6 +29,7 @@ public class GenericConstants {
     public static final String CMD_GO_TO_PLAYSTORE = "go_to_playtore";
     public static final String CMD_PROMOTE_APP = "promote_app";
     public static final String CMD_PROMO_FAKE = "promo_fake";
+    public static final String CMD_NOTIFY_BUY = "notify_buy";
 
 
     //shared prefs vars
@@ -36,7 +38,6 @@ public class GenericConstants {
     public static final String KEY_SP_APP_BUILDS = "KEY_SP_APP_BUILDS";
     public static final String KEY_SP_SELECTED_THEME = "KEY_SP_SELECTED_THEME";
     public static final String KEY_SP_SELECTED_DEF_PATH = "KEY_SP_SELECTED_DEF_PATH";
-    public static final String KEY_SP_SELECTED_DEF_COPY_MOVE_PATH = "KEY_SP_SELECTED_DEF_COPY_MOVE_PATH";
 
     public static final int KEY_SELECTED_THEME_1 = 1;
     public static final int KEY_SELECTED_THEME_2 = 2;

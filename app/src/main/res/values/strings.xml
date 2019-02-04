@@ -86,4 +86,7 @@
     <string name="txt_external">External SD-card</string>
     <string name="txt_def_notific">Check out your File Manager</string>
 
+
+    <string name="txt_upgrade">Upgrade now</string>
+
 </resources>
