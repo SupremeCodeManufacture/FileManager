@@ -18,6 +18,9 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         App.setAppBuilds(App.getAppBuilds() + 1);
 
+        if (App.getFirstLaunchMilis() == 0)
+            App.setFirstLaunchMilis(System.currentTimeMillis());
+
         boolean needToShowPayBannerFlag = getIntent().getBooleanExtra(GenericConstants.EXTRA_NEED_UPGRADE, false);
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra(GenericConstants.EXTRA_NEED_UPGRADE, needToShowPayBannerFlag);

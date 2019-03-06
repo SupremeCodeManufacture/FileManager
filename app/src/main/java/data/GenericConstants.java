@@ -4,9 +4,10 @@ public class GenericConstants {
 
     public static final String KEY_IN_APP_SKU_ID = "pro_version";
     public static final int KEY_IN_APP_RESPONSE_CODE = 123;
+    public static final long THREE_DAYS_IN_MILIS = 259200000L;
     public static String EXTRA_ALL_INTERNAL_FILES_PATH = "/storage/emulated/0";
 
-    public static String SUPPORT_EMAIL = "briefkasten777@gmail.com";
+    public static String SUPPORT_EMAIL = "support@suprememanufacture.com";
 
     public static String EXTRA_ARG_PATH = "EXTRA_ARG_PATH";
     public static String EXTRA_ARG_PATTERN = "EXTRA_ARG_PATTERN";
@@ -38,6 +39,7 @@ public class GenericConstants {
     public static final String KEY_SP_APP_BUILDS = "KEY_SP_APP_BUILDS";
     public static final String KEY_SP_SELECTED_THEME = "KEY_SP_SELECTED_THEME";
     public static final String KEY_SP_SELECTED_DEF_PATH = "KEY_SP_SELECTED_DEF_PATH";
+    public static final String KEY_FIRST_LAUNCH = "KEY_FIRST_LAUNCH";
 
     public static final int KEY_SELECTED_THEME_1 = 1;
     public static final int KEY_SELECTED_THEME_2 = 2;
@@ -56,8 +58,6 @@ public class GenericConstants {
     public static long TIME_SINCE_7_DAYS = System.currentTimeMillis() - 604800000L;
     public static long TIME_SINCE_30_DAYS = System.currentTimeMillis() - 2592000000L;
     public static long TIME_SINCE_ANWAYS = 0;
-
-    public static long[] TIMES_SINCE_ARRAY = new long[]{TIME_SINCE_3_HOURS, TIME_SINCE_24_HOURS, TIME_SINCE_3_DAYS, TIME_SINCE_7_DAYS, TIME_SINCE_30_DAYS, TIME_SINCE_ANWAYS};
 
     public static String REGEX_IMAGES = "([^\\s]+(\\.(?i)(bmp|gif|ico|jpeg|jpg|pcx|png|psd|tga|tiff|tif|xcf))$)";
     public static String REGEX_VIDS = "([^\\s]+(\\.(?i)(avi|mov|wmv|mkv|3gp|f4v|flv|mp4|mpeg|webm))$)";

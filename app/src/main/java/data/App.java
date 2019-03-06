@@ -5,17 +5,12 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.SupremeManufacture.filemanager.BuildConfig;
-import com.ap.gdpr.ApGdpr;
-import com.ap.gdpr.internal.IAgreementConsentType;
-import com.ap.gdpr.internal.IOnRemoteStatusListener;
-import com.ap.gdpr.internal.ISdkAgreement;
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
-import logic.helpers.MyLogs;
 import logic.payment.util.IabHelper;
 
-public class App extends MultiDexApplication implements ISdkAgreement {
+public class App extends MultiDexApplication {
 
     private static Context mContext;
     public static IabHelper PAYMENT_HELPER;
@@ -24,6 +19,7 @@ public class App extends MultiDexApplication implements ISdkAgreement {
     public static int SELECTED_THEME;
     public static String selectedMemoryDefPath;
     public static String selectedMemoryCopyMovePath;
+    public static long FIRST_LAUNCH_MILIS;
 
 
     @Override
@@ -36,10 +32,6 @@ public class App extends MultiDexApplication implements ISdkAgreement {
                 .debuggable(BuildConfig.DEBUG)
                 .build();
         Fabric.with(fabric);
-
-        //ads tapcore SDK
-        initAdsSdk();
-        com.SupremeManufacture.filemanager.SdkAgreement.getAgreement(getApplicationContext());
     }
 
     @Override
@@ -113,44 +105,12 @@ public class App extends MultiDexApplication implements ISdkAgreement {
         App.selectedMemoryCopyMovePath = selectedMemoryCopyMovePath;
     }
 
-    private void initAdsSdk() {
-        ApGdpr.init(this);
-        registerAgreements();
-        Thread fetchThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                ApGdpr.fetchRemoteStatuses();
-            }
-        });
-        fetchThread.setPriority(Thread.MIN_PRIORITY);
-        fetchThread.start();
+    public static long getFirstLaunchMilis() {
+        return FIRST_LAUNCH_MILIS != 0 ? FIRST_LAUNCH_MILIS : SharedPrefs.getSharedPrefsLong(GenericConstants.KEY_FIRST_LAUNCH);
     }
 
-    private void registerAgreements() {
-        ApGdpr.registerAgreement(new App());
-    }
-
-
-    //ads sdk
-    @Override
-    public IAgreementConsentType[] getConsentTypes() {
-        //MyLogs.LOG("App", "getConsentTypes", "...");
-        return new IAgreementConsentType[0];
-    }
-
-    @Override
-    public void setUserConsent(IAgreementConsentType iAgreementConsentType, long l, boolean b) {
-        //MyLogs.LOG("App", "setUserConsent", "...");
-    }
-
-    @Override
-    public String getSdkIdentifier() {
-        //MyLogs.LOG("App", "getSdkIdentifier", "...");
-        return null;
-    }
-
-    @Override
-    public void fetchRemoteStatus(IAgreementConsentType iAgreementConsentType, IOnRemoteStatusListener iOnRemoteStatusListener) {
-        //MyLogs.LOG("App", "fetchRemoteStatus", "...");
+    public static void setFirstLaunchMilis(long firstLaunchMilis) {
+        FIRST_LAUNCH_MILIS = firstLaunchMilis;
+        SharedPrefs.setSharedPrefsLong(GenericConstants.KEY_FIRST_LAUNCH, firstLaunchMilis);
     }
 }

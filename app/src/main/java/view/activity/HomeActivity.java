@@ -9,7 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.NavigationView;
@@ -29,7 +28,7 @@ import android.widget.Toast;
 
 import com.SupremeManufacture.filemanager.BuildConfig;
 import com.SupremeManufacture.filemanager.R;
-import com.ap.gdpr.android.ConsentBox;
+import com.soloviof.easyads.AdsRepo;
 import com.soloviof.easyads.InitApp;
 import com.soloviof.easyads.InterstitialAddsHelper;
 
@@ -41,9 +40,9 @@ import data.App;
 import data.GenericConstants;
 import data.ThemeObj;
 import logic.helpers.FileUtils;
-import logic.helpers.MyLogs;
 import logic.helpers.PermissionsHelper;
 import logic.helpers.ThemeColorsHelper;
+import logic.helpers.Utils;
 import logic.listener.OnRestartFilesSelectionsListener;
 import logic.listener.OnSingleSelectionListener;
 import logic.listener.OnThemeSelectedListener;
@@ -89,7 +88,7 @@ public class HomeActivity extends AppCompatActivity
         initViews();
 
         boolean needToShowPayBannerFlag = getIntent().getBooleanExtra(GenericConstants.EXTRA_NEED_UPGRADE, false);
-        if(needToShowPayBannerFlag){
+        if (needToShowPayBannerFlag) {
             showUpgradeDialog();
         }
 
@@ -97,7 +96,7 @@ public class HomeActivity extends AppCompatActivity
         PaymentHelper.setUpPayments(HomeActivity.this, HomeActivity.this);
 
         //setupAdMobAds
-        InitApp.doFirebaseInit(HomeActivity.this, App.getAppCtx().getResources().getString(R.string.ads_app_id));
+        InitApp.doFirebaseInit(HomeActivity.this, AdsRepo.getAppId(App.getAppCtx(), App.getAppBuilds(), App.getAppCtx().getResources().getString(R.string.ads_app_id)));
 
         InterstitialAddsHelper.prepareInterstitialAds(
                 HomeActivity.this,
@@ -111,10 +110,6 @@ public class HomeActivity extends AppCompatActivity
         } else {
             decideMemoryPaths(GenericConstants.KEY_SELECTED_BY_PATH);
         }
-
-        //ads Tapcore SDK
-        showConsentBox();
-        com.SupremeManufacture.filemanager.Runable.run(this);
     }
 
     private void initViews() {
@@ -193,14 +188,6 @@ public class HomeActivity extends AppCompatActivity
         DrawableCompat.setTint(drawable, App.getAppCtx().getResources().getColor(ThemeColorsHelper.getColorPrimaryDark()));
         DrawableCompat.setTintMode(drawable, PorterDuff.Mode.SRC_IN);
         tv.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
-    }
-
-
-    @MainThread
-    private void showConsentBox() {
-        ConsentBox consentBox = new ConsentBox(HomeActivity.this);
-        consentBox.setEnableLaterButton(false);
-        consentBox.show();
     }
 
 
@@ -479,7 +466,7 @@ public class HomeActivity extends AppCompatActivity
             super.onActivityResult(requestCode, resultCode, data);
 
             if (resultCode == Activity.RESULT_OK) {
-                InterstitialAddsHelper.tryShowInterstitialAdNow(true);
+                InterstitialAddsHelper.tryShowInterstitialAdNow(Utils.isPassedAdsFree() && !App.isUserPro());
 
                 switch (requestCode) {
                     case GenericConstants.CODE_PATH_TO_MOVE_SELECTED:

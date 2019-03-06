@@ -10,6 +10,7 @@ import com.SupremeManufacture.filemanager.R;
 import java.util.Calendar;
 
 import data.App;
+import data.GenericConstants;
 
 public class Utils {
 
@@ -58,4 +59,7 @@ public class Utils {
         return drawable;
     }
 
+    public static boolean isPassedAdsFree() {
+        return System.currentTimeMillis() > (App.getFirstLaunchMilis() + GenericConstants.THREE_DAYS_IN_MILIS);
+    }
 }
