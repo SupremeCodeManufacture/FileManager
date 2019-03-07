@@ -83,7 +83,6 @@ public class FrgMemorySelector extends BaseFrg implements View.OnClickListener {
             case R.id.itm_external_memory:
                 if (isSelectedForCopyMove) {
                     ((PathSelectionActivity) getActivity()).openPasteListByFolder(sdardPath, false);
-//                    ((PathSelectionActivity) getActivity()).openPasteByFolderSD();
 
                 } else {
                     App.setSelectedMemoryDefPath(sdardPath);

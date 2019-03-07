@@ -73,6 +73,7 @@ public class HomeActivity extends AppCompatActivity
 
     private BottomSheetBehavior sheetBehavior;
     private TextView tvRename, tvDet;
+    private View mFakeViewPadding;
 
 
     private OnRestartFilesSelectionsListener listener;
@@ -137,8 +138,14 @@ public class HomeActivity extends AppCompatActivity
         sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_HIDDEN && mListSelectedFiles.size() > 0) {
-                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                    mFakeViewPadding.setVisibility(View.GONE);
+
+                    if (mListSelectedFiles.size() > 0)
+                        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
+                } else {
+                    mFakeViewPadding.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -173,6 +180,8 @@ public class HomeActivity extends AppCompatActivity
 
         tvDet = (TextView) findViewById(R.id.tv_det);
         tvDet.setOnClickListener(this);
+
+        mFakeViewPadding = (View) findViewById(R.id.view_bottom_mask);
 
         showHideRemoveAdsOption(App.isUserPro());
     }
@@ -212,7 +221,15 @@ public class HomeActivity extends AppCompatActivity
                     .commit();
 
         } else {
-            openListByFolder(GenericConstants.EXTRA_ALL_INTERNAL_FILES_PATH, true);
+            switch (whereToGoFurther) {
+                case GenericConstants.KEY_SELECTED_LAST_USED:
+                    openListByLastUsed();
+                    break;
+
+                case GenericConstants.KEY_SELECTED_BY_PATH:
+                    openListByFolder(GenericConstants.EXTRA_ALL_INTERNAL_FILES_PATH, false);
+                    break;
+            }
         }
     }
 
@@ -270,16 +287,17 @@ public class HomeActivity extends AppCompatActivity
             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
             if (listToMove.size() == 1) {
-                tvDet.setEnabled(true);
-                tvRename.setEnabled(true);
+                tvDet.setVisibility(View.VISIBLE);
+                tvRename.setVisibility(View.VISIBLE);
 
             } else {
-                tvDet.setEnabled(false);
-                tvRename.setEnabled(false);
+                tvDet.setVisibility(View.GONE);
+                tvRename.setVisibility(View.GONE);
             }
 
         } else {
             sheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+            this.mListSelectedFiles.clear();
         }
     }
 
@@ -491,7 +509,8 @@ public class HomeActivity extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_share:
-                FileUtils.shareFile(HomeActivity.this, mListSelectedFiles.get(0));
+                if (mListSelectedFiles.size() > 0)
+                    FileUtils.shareFile(HomeActivity.this, mListSelectedFiles.get(0));
 
                 //refresh selection
                 if (listener != null) listener.onRestartSelections();

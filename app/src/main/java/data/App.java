@@ -18,7 +18,6 @@ public class App extends MultiDexApplication {
     public static boolean USER_PRO;
     public static int SELECTED_THEME;
     public static String selectedMemoryDefPath;
-    public static String selectedMemoryCopyMovePath;
     public static long FIRST_LAUNCH_MILIS;
 
 
@@ -95,14 +94,6 @@ public class App extends MultiDexApplication {
     public static void setSelectedMemoryDefPath(String selectedMemoryDefPath) {
         App.selectedMemoryDefPath = selectedMemoryDefPath;
         SharedPrefs.setSharedPrefsString(GenericConstants.KEY_SP_SELECTED_DEF_PATH, selectedMemoryDefPath);
-    }
-
-    public static String getSelectedMemoryCopyMovePath() {
-        return selectedMemoryCopyMovePath;
-    }
-
-    public static void setSelectedMemoryCopyMovePath(String selectedMemoryCopyMovePath) {
-        App.selectedMemoryCopyMovePath = selectedMemoryCopyMovePath;
     }
 
     public static long getFirstLaunchMilis() {

@@ -17,69 +17,82 @@
         android:layout_height="56dp"
         android:background="@color/primary_light_0"
         android:gravity="center_vertical"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp">
+        android:paddingStart="@dimen/margin_bottom_sheet"
+        android:paddingEnd="@dimen/margin_bottom_sheet">
 
 
         <TextView
             android:id="@+id/btn_share"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            tools:drawableTop="@drawable/ic_share"
             android:drawablePadding="2dp"
+            android:ellipsize="end"
             android:focusable="true"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@string/txt_share"
             android:textColor="@color/primary_text"
-            android:textSize="@dimen/txt_xs_small" />
+            android:textSize="@dimen/txt_xs_small"
+            tools:drawableTop="@drawable/ic_share" />
 
         <TextView
             android:id="@+id/btn_move"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            tools:drawableTop="@drawable/ic_move"
             android:drawablePadding="2dp"
+            android:ellipsize="end"
             android:focusable="true"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@string/txt_move"
             android:textColor="@color/primary_text"
-            android:textSize="@dimen/txt_xs_small" />
+            android:textSize="@dimen/txt_xs_small"
+            tools:drawableTop="@drawable/ic_move" />
 
         <TextView
             android:id="@+id/btn_delete"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            tools:drawableTop="@drawable/ic_delete"
             android:drawablePadding="2dp"
+            android:ellipsize="end"
             android:focusable="true"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@string/txt_del"
             android:textColor="@color/primary_text"
-            android:textSize="@dimen/txt_xs_small" />
+            android:textSize="@dimen/txt_xs_small"
+            tools:drawableTop="@drawable/ic_delete" />
 
         <TextView
             android:id="@+id/btn_more"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            tools:drawableTop="@drawable/ic_more"
             android:drawablePadding="2dp"
+            android:ellipsize="end"
             android:focusable="true"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@string/txt_more"
             android:textColor="@color/primary_text"
-            android:textSize="@dimen/txt_xs_small" />
+            android:textSize="@dimen/txt_xs_small"
+            tools:drawableTop="@drawable/ic_more" />
 
     </LinearLayout>
 
