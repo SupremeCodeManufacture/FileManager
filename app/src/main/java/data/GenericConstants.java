@@ -4,7 +4,7 @@ public class GenericConstants {
 
     public static final String KEY_IN_APP_SKU_ID = "pro_version";
     public static final int KEY_IN_APP_RESPONSE_CODE = 123;
-    public static final long THREE_DAYS_IN_MILIS = 259200000L;
+    public static final long TWO_DAYS_IN_MILIS = 172800000L;
     public static String EXTRA_ALL_INTERNAL_FILES_PATH = "/storage/emulated/0";
 
     public static String SUPPORT_EMAIL = "support@suprememanufacture.com";

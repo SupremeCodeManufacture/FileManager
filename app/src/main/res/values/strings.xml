@@ -19,7 +19,7 @@
     <string name="txt_fake_from" translatable="false">Best apps</string>
     <string name="txt_fake_msg" translatable="false">Try out our new app on Google Play!</string>
     <string name="txt_err_upgrade">Sorry unexpected error has occurred. Please make sure your device is connected with an active Google account and has the latest version of Google Play Services.</string>
-    <string name="txt_worning_pro_done">Successful payment, you became a PRO user!</string>
+    <string name="txt_worning_pro_done">Successful payment, you become a PRO user!</string>
 
     <string name="tv_imgs">Images</string>
     <string name="tv_vids">Videos</string>
@@ -82,7 +82,7 @@
     <string name="txt_new_name">Insert new name</string>
     <string name="txt_sel_theme">Select theme</string>
 
-    <string name="txt_internal">Iternal memory</string>
+    <string name="txt_internal">Internal memory</string>
     <string name="txt_external">External SD-card</string>
     <string name="txt_def_notific">Check out your File Manager</string>
 

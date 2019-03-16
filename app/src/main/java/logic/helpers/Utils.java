@@ -60,6 +60,6 @@ public class Utils {
     }
 
     public static boolean isPassedAdsFree() {
-        return System.currentTimeMillis() > (App.getFirstLaunchMilis() + GenericConstants.THREE_DAYS_IN_MILIS);
+        return System.currentTimeMillis() > (App.getFirstLaunchMilis() + GenericConstants.TWO_DAYS_IN_MILIS);
     }
 }

@@ -17,7 +17,6 @@ import java.util.List;
 import data.App;
 import data.GenericConstants;
 import logic.helpers.FileUtils;
-import logic.helpers.Utils;
 import logic.listener.OnItmClickListener;
 import logic.listener.OnRestartFilesSelectionsListener;
 import view.activity.HomeActivity;
@@ -51,7 +50,7 @@ public abstract class BaseFrg extends Fragment implements
     }
 
     protected void initBanner(LinearLayout bannerHolder, String logAdBannerName) {
-        if (Utils.isPassedAdsFree() && !App.isUserPro()) {
+        if (App.getAppBuilds() > 2 && !App.isUserPro()) {
             bannerHolder.setVisibility(View.VISIBLE);
 
             CustomizeAds.setupAddBanner(
