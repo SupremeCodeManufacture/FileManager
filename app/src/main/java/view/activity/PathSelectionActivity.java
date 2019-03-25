@@ -50,7 +50,7 @@ public class PathSelectionActivity extends AppCompatActivity {
                     .commit();
 
         } else {
-            openPasteListByFolder(GenericConstants.EXTRA_ALL_INTERNAL_FILES_PATH, false);
+            openPasteListByFolder(GenericConstants.EXTRA_ALL_INTERNAL_FILES_PATH, true);
         }
     }
 

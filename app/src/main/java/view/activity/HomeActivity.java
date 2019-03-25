@@ -109,7 +109,7 @@ public class HomeActivity extends AppCompatActivity
             ActivityCompat.requestPermissions(this, PermissionsHelper.PERMISSIONS_STORAGE, PermissionsHelper.ACTION_MANAGE_STORE_PERMISSION_CODE);
 
         } else {
-            decideMemoryPaths(GenericConstants.KEY_SELECTED_BY_PATH);
+            decideMemoryPaths(GenericConstants.KEY_SELECTED_BY_PATH, true);
         }
     }
 
@@ -200,7 +200,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
 
-    public void decideMemoryPaths(int whereToGoFurther) {
+    public void decideMemoryPaths(int whereToGoFurther, boolean isFirstOpen) {
         String sdCardPath = FileUtils.getSdCardPath();
         //MyLogs.LOG("HomeActivity", "decideMemoryPaths", "sdCardPath: " + sdCardPath);
 
@@ -227,7 +227,7 @@ public class HomeActivity extends AppCompatActivity
                     break;
 
                 case GenericConstants.KEY_SELECTED_BY_PATH:
-                    openListByFolder(GenericConstants.EXTRA_ALL_INTERNAL_FILES_PATH, false);
+                    openListByFolder(GenericConstants.EXTRA_ALL_INTERNAL_FILES_PATH, isFirstOpen);
                     break;
             }
         }
@@ -392,7 +392,7 @@ public class HomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_by_last:
-                decideMemoryPaths(GenericConstants.KEY_SELECTED_LAST_USED);
+                decideMemoryPaths(GenericConstants.KEY_SELECTED_LAST_USED, false);
                 break;
 
             case R.id.nav_delete_ads:
@@ -400,7 +400,7 @@ public class HomeActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_by_folder:
-                decideMemoryPaths(GenericConstants.KEY_SELECTED_BY_PATH);
+                decideMemoryPaths(GenericConstants.KEY_SELECTED_BY_PATH, false);
                 break;
 
             case R.id.nav_ask:
@@ -471,7 +471,7 @@ public class HomeActivity extends AppCompatActivity
                 );
 
             } else {
-                decideMemoryPaths(GenericConstants.KEY_SELECTED_BY_PATH);
+                decideMemoryPaths(GenericConstants.KEY_SELECTED_BY_PATH, true);
             }
         }
     }

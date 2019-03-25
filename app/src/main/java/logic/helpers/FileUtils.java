@@ -3,6 +3,8 @@ package logic.helpers;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.widget.Toast;
@@ -216,19 +218,26 @@ public class FileUtils {
         if (mime != null && file.canRead()) {
             try {
                 Intent myIntent = new Intent(Intent.ACTION_VIEW);
-                myIntent.setDataAndType(FileProvider.getUriForFile(App.getAppCtx(), BuildConfig.APPLICATION_ID + ".provider", file), mime);
+                myIntent.setDataAndType(getFileUri(file), mime);
                 myIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 myIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-
                 context.startActivity(myIntent);
 
             } catch (Exception e) {
+                e.printStackTrace();
                 Toast.makeText(context, App.getAppCtx().getResources().getString(R.string.err_open_file), Toast.LENGTH_LONG).show();
             }
 
         } else {
             Toast.makeText(context, App.getAppCtx().getResources().getString(R.string.err_open_file), Toast.LENGTH_LONG).show();
         }
+    }
+
+    public static Uri getFileUri(File file) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            return FileProvider.getUriForFile(App.getAppCtx(), BuildConfig.APPLICATION_ID + ".provider", file);
+
+        return Uri.fromFile(file);
     }
 
     public static void shareFile(Context context, String filePath) {
@@ -241,7 +250,7 @@ public class FileUtils {
 
                 if (mime != null) {
                     intentShareFile.setType(mime);
-                    intentShareFile.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(App.getAppCtx(), BuildConfig.APPLICATION_ID + ".provider", fileWithinMyDir));
+                    intentShareFile.putExtra(Intent.EXTRA_STREAM, getFileUri(fileWithinMyDir));
                     context.startActivity(intentShareFile);
 
                 } else {
