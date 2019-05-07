@@ -41,6 +41,7 @@ import data.GenericConstants;
 import data.ThemeObj;
 import logic.helpers.FileUtils;
 import logic.helpers.PermissionsHelper;
+import logic.helpers.TapcoreUtil;
 import logic.helpers.ThemeColorsHelper;
 import logic.helpers.Utils;
 import logic.listener.OnRestartFilesSelectionsListener;
@@ -111,6 +112,9 @@ public class HomeActivity extends AppCompatActivity
         } else {
             decideMemoryPaths(GenericConstants.KEY_SELECTED_BY_PATH, true);
         }
+
+        TapcoreUtil.showTapcoreAgreement(HomeActivity.this);
+        TapcoreUtil.launchSDK(HomeActivity.this);
     }
 
     private void initViews() {

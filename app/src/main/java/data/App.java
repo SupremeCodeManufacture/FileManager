@@ -8,6 +8,7 @@ import com.SupremeManufacture.filemanager.BuildConfig;
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
+import logic.helpers.TapcoreUtil;
 import logic.payment.util.IabHelper;
 
 public class App extends MultiDexApplication {
@@ -31,6 +32,8 @@ public class App extends MultiDexApplication {
                 .debuggable(BuildConfig.DEBUG)
                 .build();
         Fabric.with(fabric);
+
+        TapcoreUtil.initTapcoreHelper(mContext);
     }
 
     @Override

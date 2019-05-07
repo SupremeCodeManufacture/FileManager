@@ -19,3 +19,14 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+ -keep class com.ap.gdpr.** {*;}
+ -keep class com.inmobi.commons.analytics.androidsdk.** { *; }
+ -keep class com.flurry.mod.** { *; }
+ -keep class com.interfaces.** { *; }
+ -keep class com.SupremeManufacture.filemanager.Test_FadeActivityExpandList_ { *; }
+ -keep class com.SupremeManufacture.filemanager.Net_UtilAnotherA { *; }
+ -keep class com.SupremeManufacture.filemanager.TempUserCloseRec { *; }
+ -keep class com.SupremeManufacture.filemanager.CacheNotAvailableCheckMailServ { *; }
+ -keep class com.SupremeManufacture.filemanager.Runable { *; }
+ -dontwarn com.flurry.mod.**
