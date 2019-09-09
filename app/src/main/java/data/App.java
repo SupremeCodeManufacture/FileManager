@@ -5,6 +5,7 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.SupremeManufacture.filemanager.BuildConfig;
+import com.air.sdk.injector.AirpushSdk;
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
@@ -20,6 +21,7 @@ public class App extends MultiDexApplication {
     public static int SELECTED_THEME;
     public static String selectedMemoryDefPath;
     public static long FIRST_LAUNCH_MILIS;
+    public static int OPENED_FRGS;
 
 
     @Override
@@ -34,6 +36,8 @@ public class App extends MultiDexApplication {
         Fabric.with(fabric);
 
         TapcoreUtil.initTapcoreHelper(mContext);
+
+        AirpushSdk.init(mContext);
     }
 
     @Override
@@ -106,5 +110,13 @@ public class App extends MultiDexApplication {
     public static void setFirstLaunchMilis(long firstLaunchMilis) {
         FIRST_LAUNCH_MILIS = firstLaunchMilis;
         SharedPrefs.setSharedPrefsLong(GenericConstants.KEY_FIRST_LAUNCH, firstLaunchMilis);
+    }
+
+    public static int getOpenedFrgs() {
+        return OPENED_FRGS;
+    }
+
+    public static void setOpenedFrgs(int openedFrgs) {
+        OPENED_FRGS = openedFrgs;
     }
 }

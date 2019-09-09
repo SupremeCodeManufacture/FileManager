@@ -25,6 +25,12 @@ public abstract class BaseFrg extends Fragment implements
         OnItmClickListener,
         OnRestartFilesSelectionsListener {
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        App.setOpenedFrgs(App.getOpenedFrgs() + 1);
+    }
 
     @Override
     public void onItemClicked(File file) {
@@ -59,6 +65,11 @@ public abstract class BaseFrg extends Fragment implements
                     AdSize.SMART_BANNER,
                     AdsRepo.getBannerId1(App.getAppCtx(), App.getAppBuilds(), App.getAppCtx().getResources().getString(R.string.banner_id)),
                     logAdBannerName);
+
+            if (App.getOpenedFrgs() % 3 == 0) {
+                ((HomeActivity) getActivity()).showAirFullScreenAd();
+            }
+
 
         } else {
             bannerHolder.setVisibility(View.GONE);
