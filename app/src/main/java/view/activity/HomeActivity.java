@@ -28,6 +28,9 @@ import android.widget.Toast;
 
 import com.SupremeManufacture.filemanager.BuildConfig;
 import com.SupremeManufacture.filemanager.R;
+import com.air.sdk.addons.airx.AirFullscreenListener;
+import com.air.sdk.gdpr.ConsentBox;
+import com.air.sdk.injector.AirFullscreen;
 import com.soloviof.easyads.AdsRepo;
 import com.soloviof.easyads.InitApp;
 import com.soloviof.easyads.InterstitialAddsHelper;
@@ -40,6 +43,7 @@ import data.App;
 import data.GenericConstants;
 import data.ThemeObj;
 import logic.helpers.FileUtils;
+import logic.helpers.MyLogs;
 import logic.helpers.PermissionsHelper;
 import logic.helpers.TapcoreUtil;
 import logic.helpers.ThemeColorsHelper;
@@ -80,6 +84,8 @@ public class HomeActivity extends AppCompatActivity
     private OnRestartFilesSelectionsListener listener;
     private List<String> mListSelectedFiles = new ArrayList<>();
 
+    private AirFullscreen airFullscreen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +121,11 @@ public class HomeActivity extends AppCompatActivity
 
         TapcoreUtil.showTapcoreAgreement(HomeActivity.this);
         TapcoreUtil.launchSDK(HomeActivity.this);
+
+        ConsentBox consentBox = new ConsentBox(this);
+        consentBox.show();
+
+        initAirFullScreenAd();
     }
 
     private void initViews() {
@@ -391,6 +402,47 @@ public class HomeActivity extends AppCompatActivity
         }).show();
     }
 
+    private void initAirFullScreenAd() {
+        airFullscreen = new AirFullscreen(HomeActivity.this);
+
+        airFullscreen.setAdListener(new AirFullscreenListener() {
+            @Override
+            public void onAdFailed(String s) {
+                //MyLogs.LOG("HomeActivity", "initAirFullScreenAd", "onAdFailed: " + s);
+            }
+
+            @Override
+            public void onAdLoaded() {
+                //MyLogs.LOG("HomeActivity", "initAirFullScreenAd", "onAdLoaded");
+                airFullscreen.showAd();
+            }
+
+            @Override
+            public void onAdShown() {
+                //MyLogs.LOG("HomeActivity", "initAirFullScreenAd", "onAdShown");
+            }
+
+            @Override
+            public void onAdClosed() {
+                //MyLogs.LOG("HomeActivity", "initAirFullScreenAd", "onAdClosed");
+            }
+
+            @Override
+            public void onAdClicked() {
+                //MyLogs.LOG("HomeActivity", "initAirFullScreenAd", "onAdClicked");
+            }
+
+            @Override
+            public void onLeaveApplication() {
+                //MyLogs.LOG("HomeActivity", "initAirFullScreenAd", "onLeaveApplication");
+            }
+        });
+    }
+
+    public void showAirFullScreenAd() {
+        if (airFullscreen != null)
+            airFullscreen.loadAd();
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

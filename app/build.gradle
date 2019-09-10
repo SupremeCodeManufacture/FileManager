@@ -22,8 +22,8 @@ android {
         applicationId "com.SupremeManufacture.filemanager"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 130
-        versionName "1.30-tapcore"
+        versionCode 132
+        versionName "1.32-air"
 
         multiDexEnabled true
     }
@@ -71,6 +71,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-places:16.1.0'
     implementation files('libs/gdpr-helper-1.5.jar')
     implementation files('libs/tapcore-iv-8-1.30.jar')
+
+    //extra air SDK
+    implementation files('libs/AirSDK.jar')
 }
 
 apply plugin: "com.google.gms.google-services"
