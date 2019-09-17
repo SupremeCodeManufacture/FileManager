@@ -22,8 +22,8 @@ android {
         applicationId "com.SupremeManufacture.filemanager"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 133
-        versionName "1.33-air"
+        versionCode 134
+        versionName "1.34-air"
 
         multiDexEnabled true
     }
